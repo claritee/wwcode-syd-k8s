@@ -1,21 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-python-app-deployment
+  name: python-app-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: my-python-app
+      app: python-app
   template:
     metadata:
       labels:
-        app: my-python-app
+        app: python-app
     spec:
       containers:
-      - name: my-python-app-container
-        image: my-python-app:latest
-        imagePullPolicy: Never
+      - name: python-app-container
+        image: claritee/python-app:latest
         ports:
         - containerPort: 8000
           name: http
@@ -25,10 +24,10 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: my-python-app-service
+  name: python-app-service
 spec:
   selector:
-    app: my-python-app
+    app: python-app
   ports:
   - protocol: TCP
     targetPort: 8000

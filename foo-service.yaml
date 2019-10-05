@@ -14,10 +14,9 @@ spec:
     spec:
       containers:
       - name: foo-container
-        image: my-python-app:latest
-        imagePullPolicy: Never
+        image: claritee/node-app:latest
         ports:
-        - containerPort: 8000
+        - containerPort: 3000
           name: http
         - containerPort: 22
           name: ssh
@@ -31,8 +30,8 @@ spec:
     app: foo
   ports:
   - protocol: TCP
-    targetPort: 8000
-    port: 8080
+    targetPort: 3000
+    port: 80
     name: http
   - protocol: TCP
     targetPort: 22
