@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-nginx-pod
+spec:
+  containers:
+  - name: hello-nginx-container
+    image: kitematic/hello-world-nginx:latest

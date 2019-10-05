@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-python-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-python-app
+  template:
+    metadata:
+      labels:
+        app: my-python-app
+    spec:
+      containers:
+      - name: my-python-app-container
+        image: my-python-app:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000
+          name: http
+        - containerPort: 22
+          name: ssh
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-python-app-service
+spec:
+  selector:
+    app: my-python-app
+  ports:
+  - protocol: TCP
+    targetPort: 8000
+    port: 80
+    name: http
+  - protocol: TCP
+    targetPort: 22
+    port: 22
+    name: ssh
+  type: LoadBalancer
+  externalIPs:
+  - 10.1.1.8

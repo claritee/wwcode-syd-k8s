@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-nginx-pod-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-nginx-pod
+  template:
+    metadata:
+      labels:
+        app: hello-nginx-pod
+    spec:
+      containers:
+      - name: hello-nginx-container
+        image: kitematic/hello-world-nginx:latest
