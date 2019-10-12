@@ -4,3 +4,4 @@ This contains the code / configuration corresponding to a beginners K8s tutorial
 
 The tutorial can be found at https://tinyurl.com/wwc-k8s-tutorial
 
+Setup required: https://tinyurl.com/docker-k8s-setup
